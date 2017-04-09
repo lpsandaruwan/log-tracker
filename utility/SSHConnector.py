@@ -13,11 +13,6 @@ class SSHConnector:
     def __init__(self):
         self.__connector = paramiko.SSHClient()
         self.__sftp_client = None
-        self.__options = {
-            0: self.connect_using_key_file,
-            1: self.connect_using_private_key,
-            2: self.connect_using_user_password
-        }
 
     # close SSH connection
     def close_connection(self):
@@ -31,14 +26,6 @@ class SSHConnector:
             key_filename=kwargs["key_file"]
         )
 
-    def connect_using_user_password(self, **kwargs):
-        self.__connector.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.__connector.connect(
-            hostname=kwargs["hostname"],
-            username=kwargs["username"],
-            password=kwargs["password"]
-        )
-
     def connect_using_private_key(self, **kwargs):
         self.__connector.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.__connector.connect(
@@ -47,13 +34,17 @@ class SSHConnector:
             pkey=kwargs["private_key"]
         )
 
+    def connect_using_user_password(self, **kwargs):
+        self.__connector.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        self.__connector.connect(
+            hostname=kwargs["hostname"],
+            username=kwargs["username"],
+            password=kwargs["password"]
+        )
+
     # create SFTP connection
     def open_sftp_connection(self):
         self.__sftp_client = self.__connector.open_sftp()
-
-    # open connection using mode index, for mode index refer self.__options
-    def open_ssh_connection(self, mode, **kwargs):
-        self.__options[mode](kwargs)
 
     def get_connector(self):
         return self.__connector
