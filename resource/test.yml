@@ -2,5 +2,4 @@ name: test
 hostname: localhost
 username: lpsandaruwan
 password: lxtreme
-logs:
--/home/lpsandaruwan/Desktop/Devel/log.txt
+log: /home/lpsandaruwan/Desktop/Devel/log.txt

@@ -3,3 +3,6 @@
 
 ### OS ###
 .directory
+
+### python ###
+__pycache__/

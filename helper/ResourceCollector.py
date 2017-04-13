@@ -17,9 +17,12 @@ class ResourceCollector:
     def collect_yaml_files(self):
         for dir_path, _, file_names in os.walk(self.__resource_directory):
             for file_name in file_names:
-                self.__resource_files.append(
-                    os.path.abspath(os.path.join(dir_path, file_name))
-                )
+                if file_name.endswith(".yml"):
+                    self.__resource_files.append(
+                        os.path.abspath(os.path.join(dir_path, file_name))
+                    )
+
+        self.get_resource_files_list()
 
     def get_resource_files_list(self):
         return self.__resource_files

@@ -27,6 +27,7 @@ class YamlCrud:
         with open(self.__yaml_file, mode) as text_stream:
             try:
                 self.__yaml_data = yaml.load(text_stream)
+                self.get_yaml_data()
             except yaml.YAMLError as ex:
                 print(ex.message)
 

@@ -6,7 +6,7 @@ Helper class to read and tail log files as text files though paramiko sftp.
 """
 
 
-class TextFileReader:
+class TextStreamReader:
 
     def __init__(self, sftp_client, text_file):
         self.__sftp_client = sftp_client

@@ -16,7 +16,7 @@ class Configurer:
         self.__ssh_connection = SSHConnector()
         self.__yaml_file = yaml_file
 
-    def create_ssh_settings(self):
+    def create_ssh_connection(self):
         try:
             if self.__settings[
                 "name"
@@ -49,10 +49,16 @@ class Configurer:
                 self.__ssh_connection.open_sftp_connection()
 
         except:
-            print("invalid data provided on YAML resource")
+            print("invalid data has been provided on YAML resource")
             return None
 
     def get_sftp_connection(self):
+        if self.__settings is None:
+            self.load()
+
+        if self.__ssh_connection.get_sftp_client() is None:
+            self.create_ssh_connection()
+
         return self.__ssh_connection.get_sftp_client()
 
     def load(self):

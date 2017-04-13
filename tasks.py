@@ -1,10 +1,10 @@
 """
 Tasks
-Tasks to do using provided resources resources.
+Tasks on resource connections.
 
-09/04/2017 lpsandaruwan <http://lahiru.site>
+11/04/2017 lpsandaruwan <http://lahiru.site>
 """
 
 
-def test_function():
-    print()
+def test_function(text_stream):
+    print("")
