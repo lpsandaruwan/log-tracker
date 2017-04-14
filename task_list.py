@@ -9,6 +9,6 @@ import tasks
 
 
 TASKS = {
-    "test": tasks.test_function
+    "example": tasks.example_function
 }
 

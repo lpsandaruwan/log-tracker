@@ -5,10 +5,8 @@ Tasks on resource connections.
 11/04/2017 lpsandaruwan <http://lahiru.site>
 """
 
-import time
 
-
-def test_function(text_stream):
+def example_function(text_stream):
     # prepare text stream object
     text_stream.load()
 

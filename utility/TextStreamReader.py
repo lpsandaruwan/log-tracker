@@ -6,7 +6,6 @@ Helper class to read and tail log files as text files though paramiko sftp.
 """
 
 import os
-
 import time
 
 

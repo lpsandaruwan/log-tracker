@@ -1,0 +1,5 @@
+name: example
+hostname: HOSTNAME
+username: SSH_USERNAME
+password: SSH_PASSWORD
+log: /path/to/log/file/log.txt
