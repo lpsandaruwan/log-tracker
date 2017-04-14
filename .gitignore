@@ -1,0 +1,14 @@
+### IDE ###
+.idea/
+
+### OS ###
+.directory
+
+### python ###
+__pycache__/
+
+### jekyll ###
+_site
+.sass-cache
+.jekyll-metadata
+Gemfile.lock

@@ -1,0 +1,151 @@
+---
+title: LOG TRACKER
+layout: default
+---
+
+<div class="portfolio">
+    <div flex></div>
+
+    <div class="field">
+        <div layout-gt-sm="row">
+            <div flex="5"></div>
+
+            <div flex="90">
+                <div layout-gt-sm="row" layout-sm="column">
+                    <img class="main-image" src="img/ltrk_logo.png">
+
+                    <div layout="column">
+                        <div layout="row">
+                            <div flex="10"></div>
+
+                            <div flex="80">
+                                <div>
+                                    <div flex></div>
+
+                                    <h1 class="left-border no-left-padding">&nbsp;LOG TRACKER</h1>
+
+                                    <div flex></div>
+                                </div>
+
+                                <h3>TRACK LOG FILES THE WAY YOU WANT</h3>
+
+                                <p class="field-p">{{site.description}}</p>
+                            </div>
+
+                            <div flex="10"></div>
+                        </div>
+
+                        <div layout="row">
+                            <div flex></div>
+
+                            <md-button class="controller-btn" href="https://github.com/lpsandaruwan/log-tracker/archive/v0.1.0.zip" download>
+                                <md-icon>file_download</md-icon>
+
+                                <span>download LTRK-v0.1.0</span>
+                            </md-button>
+
+                            <div flex></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div flex="5"></div>
+        </div>
+    </div>
+    <br>
+
+    <div class="field">
+        <div layout="row">
+            <div flex></div>
+
+            <h2>TRACKING A LOG</h2>
+
+            <div flex></div>
+        </div>
+
+        For more guides and examples please refer <a href="https://github.com/lpsandaruwan/log-tracker/wiki" target="_blank">Log Tracker wiki</a>.
+        <br><br>
+
+        <h3>A YAML FILE</h3>
+        Log Tracker requires a YAML file with credential data and remote log file location. Below is an example YAML configuration file.<br><br>
+        <pre><code>
+name: example
+hostname: 127.0.0.1
+username: SSH_USERNAME
+password: SSH_PASSWORD
+log: /path/to/log/file/log.txt
+        </code></pre>
+        <br>
+
+        <h3>A PYTHON FUNCTION</h3>
+        A function mentioning what you want to do with the log file is required.
+        For every custom function a <code>text stream</code> object wil be provided by the Log Tracker.
+        Simply put your function in <strong>tasks.py</strong>
+        <br><br>
+        <pre style="color: #ededed"><code>
+<span style="color: #4ce450; font-weight: 800">def</span> example_function(text_stream):
+    <span style="color: #979797"># prepare text stream object</span>
+    text_stream.load()
+
+    <span style="color: #979797"># tail log file, equals to tail -f in unix</span>
+    <span style="color: #48d14c; font-weight: 800">for</span> line <span style="color: #48d14c; font-weight: 800">in</span> text_stream.tail():
+        <span style="color: #3dac41; font-weight: 800">print</span>(line.rstrip("\n"))
+        </code></pre>
+        <br>
+
+        <h3>AN ENTRY IN TASKS LIST</h3>
+        Simply tell Log Tracker to use the custom function by putting a record in <code>TASKS</code> list in <strong>tasks_list.py</strong>
+        <br><br>
+        <pre><code>
+TASKS = {
+    "example": tasks.example_function
+}
+        </code></pre>
+        <br>
+        All done. Now run the Log Tracker, <code>python3 ltrk.py</code>
+    </div>
+    <br>
+
+    <div class="field">
+        <div layout="row">
+            <div flex></div>
+
+            <h2>GET/CONTRIBUTE LOG TRACKER</h2>
+
+            <div flex></div>
+        </div>
+
+        <div layout="row">
+            <div flex></div>
+
+            <p>Log Tracker is a free software and heartily appreciates any kind of contribution, suggestions/issues or pull requests.</p>
+
+            <div flex></div>
+        </div>
+
+        <div layout="row">
+            <div flex></div>
+
+            <div>
+                <md-button href="https://github.com/lpsandaruwan/log-tracker/releases" class="controller-btn">
+                    <md-icon>file_download</md-icon>
+                    <span>RELEASES</span>
+                </md-button>
+
+                <md-button href="https://github.com/lpsandaruwan/log-tracker" class="controller-btn">
+                    <md-icon>content_copy</md-icon>
+                    <span>SOURCE CODE</span>
+                </md-button>
+
+                <md-button href="https://github.com/lpsandaruwan/log-tracker/issues/new" class="controller-btn">
+                    <md-icon>bug_report</md-icon>
+                    <span>ISSUE/SUGGESTION</span>
+                </md-button>
+            </div>
+
+            <div flex></div>
+        </div>
+    </div>
+    <br>
+</div>

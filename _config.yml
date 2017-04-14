@@ -1,0 +1,26 @@
+# Single Project Page
+
+title: LOG TRACKER
+email: lpsandaruwan@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Log tracker is a pythonic wrapper around paramiko, created to capture/read/tail text files using SSH.
+  It gives you the ability to create any kind of custom python function to track text files on demand.
+  To use this YAML file with credential data and a slight understanding about python(version 3) programming is more than enough.
+
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Social media links
+facebook_username: lpsandaruwan1
+github_username:  lpsandaruwan
+twitter_username: lpsandaruwan
+
+# Build settings
+markdown: kramdown
+
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
