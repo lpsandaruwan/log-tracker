@@ -22,7 +22,7 @@ class ResourceCollector:
                         os.path.abspath(os.path.join(dir_path, file_name))
                     )
 
-        self.get_resource_files_list()
+        return self.get_resource_files_list()
 
     def get_resource_files_list(self):
         return self.__resource_files

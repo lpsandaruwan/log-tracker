@@ -5,6 +5,10 @@ Helper class to read and tail log files as text files though paramiko sftp.
 08/04/2017 lpsandaruwan <http://lahiru.site>
 """
 
+import os
+
+import time
+
 
 class TextStreamReader:
 
@@ -17,12 +21,22 @@ class TextStreamReader:
         self.__text_stream.close()
 
     def get_text_stream(self):
+        if self.__text_stream is None:
+            self.__text_stream = self.__sftp_client.open(self.__text_file, "r")
+
         return self.__text_stream
 
     def load(self):
-        with self.__sftp_client.open(self.__text_file, "r") as text_stream:
-            self.__text_stream = text_stream
+        self.__text_stream = self.__sftp_client.open(self.__text_file, "r")
 
     def tail(self):
-        self.__text_stream.seek(0, 2)
-        yield self.__text_stream.readline()
+        self.__text_stream.seek(os.SEEK_END)
+
+        while True:
+            line = self.__text_stream.readline()
+
+            if not line:
+                time.sleep(0.01)
+                continue
+
+            yield line

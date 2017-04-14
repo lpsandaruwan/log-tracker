@@ -25,13 +25,13 @@ class Configurer:
             ] is not None and self.__settings[
                 "username"
             ] is not None:
-                if self.__settings["key_file"] is not None:
+                if "key_file" in self.__settings:
                     self.__ssh_connection.connect_using_key_file(
                         hostname=self.__settings["hostname"],
                         username=self.__settings["username"],
                         key_file=self.__settings["key_file"]
                     )
-                elif self.__settings["private_key"] is not None:
+                elif "private_key" in self.__settings:
                     self.__ssh_connection.connect_using_private_key(
                         hostname=self.__settings["hostname"],
                         username=self.__settings["username"],
@@ -49,8 +49,7 @@ class Configurer:
                 self.__ssh_connection.open_sftp_connection()
 
         except:
-            print("invalid data has been provided on YAML resource")
-            return None
+            raise
 
     def get_sftp_connection(self):
         if self.__settings is None:

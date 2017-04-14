@@ -30,25 +30,24 @@ def main():
         __text_stream_list = {}
 
         for __resource in __resources:
-            __text_stream_list[__resource["name"]] = TextStreamReader(
+            print()
+            __text_stream_list[YamlCrud(__resource).load("r")["name"]] = TextStreamReader(
                 Configurer(__resource).get_sftp_connection(),
-                __resource["log"]
+                YamlCrud(__resource).load("r")["log"]
             )
 
         # create ssh connections and run tasks in background
-        for key, __text_stream in __text_stream_list:
+        for key, __text_stream in __text_stream_list.items():
             # run appropriate function in background
-            threading.Thread(target=TASKS[key], args=(__text_stream))
-
-        for key, task in TASKS.items():
-            threading.Thread(target=task)
+            thread = threading.Thread(target=TASKS[key], args=(__text_stream, ))
+            thread.daemon = True
+            thread.run()
 
         while True:
             time.sleep(99999)
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, SystemExit):
         print("Exiting log tracker...")
-
 
 
 if __name__ == "__main__":
