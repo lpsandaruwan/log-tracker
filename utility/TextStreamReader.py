@@ -21,7 +21,7 @@ class TextStreamReader:
 
     def get_text_stream(self):
         if self.__text_stream is None:
-            self.__text_stream = self.__sftp_client.open(self.__text_file, "r")
+            self.load()
 
         return self.__text_stream
 
