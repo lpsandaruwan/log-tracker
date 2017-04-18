@@ -41,7 +41,7 @@ docker run ltrk
 
 If custom functions has web services(Flask or something),
 ```
-docker run -p 5000:80 ltrk
+docker run -p 5000:5000 ltrk
 ```
 
 ## License
