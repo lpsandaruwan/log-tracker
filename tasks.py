@@ -11,5 +11,5 @@ def example_function(text_stream):
     text_stream.load()
 
     # tail log file, equals to tail -f in unix
-    for line in text_stream.tail():
+    for line in text_stream.get_text_stream():
         print(line.rstrip("\n"))

@@ -6,3 +6,7 @@
 
 ### python ###
 __pycache__/
+
+### GH pages junk ###
+Gemfile.lock
+_site/
