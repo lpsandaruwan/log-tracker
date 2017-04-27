@@ -20,30 +20,6 @@ Then,
 python3 ltrk.py
 ```
 
-### Run in a docker image
-
-First create a `Dockerfile` with requierements,
-```
-FROM python:3.5
-RUN pip3 install -r requirements.txt
-CMD ["python", "ltrk.py"]
-```
-
-Then build,
-```
-docker build -t ltrk .
-```
-
-To run,
-```
-docker run ltrk
-```
-
-If custom functions has web services(Flask or something),
-```
-docker run -p 5000:5000 ltrk
-```
-
 ## License
 Copyright (c) 2017: Lahiru Pathirage lpsandaruwan@gmail.com
 
